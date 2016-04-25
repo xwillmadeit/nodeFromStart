@@ -1,3 +1,3 @@
 # nodeFromStart
 
-[node教程]https://github.com/alsotang/node-lessons
+参考：https://github.com/alsotang/node-lessons
