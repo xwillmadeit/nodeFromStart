@@ -9,9 +9,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "body-parser": "^1.15.0",
     "cheerio": "^0.20.0",
     "eventproxy": "^0.3.4",
     "express": "^4.13.4",
+    "jquery": "^2.2.3",
     "superagent": "^1.8.3",
     "utility": "^1.7.0"
   }
