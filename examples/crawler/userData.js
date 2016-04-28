@@ -1,5 +1,5 @@
 module.exports = {
-    username:'zzl',
+    username:'xxx',
     password:123456,
     captcha:123456
 }

@@ -3,8 +3,8 @@ var events = require("events");
 var userData = require('./userData');
 var emitter = new events.EventEmitter();
 
-var LOGINURL = 'http://mch.wxrrd.dev/auth/login.json';
-var GOODSURL = 'http://mch.wxrrd.dev/goods.json?column=created_at&direction=desc&limit=10&offset=0&sale=1';
+var LOGINURL = '__';
+var GOODSURL = '__';
 
 emitter.on("setCookeie", getData); //事件监听
 
