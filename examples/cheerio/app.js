@@ -2,7 +2,7 @@ var request = require('request'),
     fs = require('fs'),
     cheerio = require('cheerio'),
     path = require('path'),
-    URL_CNODE = 'http://eminem.com.cn/category/news/';
+    URL_CNODE = 'http://www.tupianzj.com/mingxing/xiezhen/gaoyuanyuan/list_211_1.html'
 
 /* 开爬 */
 (function dataCollectorStartup() {
@@ -29,12 +29,15 @@ function dataRequest(dataUrl) {
 
 function dataParse(body) {
 
+    console.log(body);
+
     var $ = cheerio.load(body);
 
-    //var result = [];
-    $('.content a img').each(function(idx, element) {
+    console.log($('#main .item a img').length);
+    $('#main .item a img').each(function(idx, element) {
+
         var $element = $(element);
-        console.log($element.attr('src'));
+        console.log($element);
         var imgsrc = $element.attr('src');
         var filename = parseUrlForFileName(imgsrc);  //生成文件名
         downloadImg(imgsrc,filename,function() {
