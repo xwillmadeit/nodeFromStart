@@ -1,21 +1,19 @@
 var cron = require('node-schedule');
 var mysql      = require('mysql');
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : '',
-  database : 'weibatest'
-});
+var mysqlConfig = require('./config');
+var connection = mysql.createConnection(mysqlConfig);
 
 //创建连接
 connection.connect();
 
 var rule = new cron.RecurrenceRule();
-rule.second = [10,20,30,40];  //支持数组
+rule.second = [10,20,30,40,50];  //支持数组
 
 var j = cron.scheduleJob(rule, function(){
 	var insertSql = 'INSERT INTO views(id,create_at) VALUES (null,?)';
-	var insertParams = [new Date()];
+	var currTime = new Date();
+
+	var insertParams = currTime;
 
 	connection.query(insertSql,insertParams,function(err, result) {
 	  if (err) {
@@ -23,10 +21,10 @@ var j = cron.scheduleJob(rule, function(){
 	  	return;
 	  }
 
-	  console.log('insertid: '+ result);
+	  console.log('insertid: '+ JSON.stringify(result));
 	});
 
-  	console.log(new Date(),'插入了一条记录');
+  	console.log(currTime,'插入了一条记录');
 });
 
 //任务结束，关闭连接
@@ -46,19 +44,5 @@ cron.scheduleJob(endDate, function(){
 	j.cancel();
     console.log(new Date(), '任务结束');    
 });
-
-/* This runs at 3:10AM every Friday, Saturday and Sunday. */
-// var rule2 = new cron.RecurrenceRule();
-// rule2.dayOfWeek = [5,6,0];
-// rule2.hour = 3;
-// rule2.minute = 10;
-// cron.scheduleJob(rule2, function(){
-//     console.log('This runs at 3:10AM every Friday, Saturday and Sunday.');
-// });
-
-/* This runs at 2:30AM on every Sunday */
-// cron.scheduleJob({hour: 2, minute: 30, dayOfWeek: 0}, function(){
-//     console.log('This runs at 2:30AM on every Sunday');
-// });
 
 //http://www.codexpedia.com/javascript/nodejs-cron-schedule-examples/
