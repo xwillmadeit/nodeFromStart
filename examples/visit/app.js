@@ -37,7 +37,7 @@ cron.scheduleJob(endDate, function(){
 	  	return;
 	  }
 
-	  console.log(result);
+	  console.log(JSON.stringify(result));
 	});
 
 	connection.end();//关闭数据库连接

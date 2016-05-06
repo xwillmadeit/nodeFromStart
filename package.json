@@ -13,10 +13,12 @@
     "cheerio": "^0.20.0",
     "eventproxy": "^0.3.4",
     "express": "^4.13.4",
+    "http-proxy": "^1.13.2",
     "jquery": "^2.2.3",
     "mysql": "github:felixge/node-mysql",
     "node-schedule": "^1.1.0",
     "request": "^2.72.0",
+    "socket.io": "^1.4.6",
     "superagent": "^1.8.3",
     "utility": "^1.7.0"
   }
